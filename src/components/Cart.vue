@@ -6,7 +6,7 @@
 
     <div class="card-input">
       <input type="number" v-model="count">
-      <span>кг</span>
+      <span>{{ data.unit }}</span>
     </div>
 
     <button @click="$emit('click', data.id, count), count = null" :disabled="!count"> В корзину </button>
