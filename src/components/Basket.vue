@@ -63,9 +63,14 @@ export default {
         color: blue;
     }
     @media (max-width: 480px) {
-        .basket__list li {
-            flex-direction: column;
-            align-items:flex-start;
+        .basket__list li span {
+            width: 50%;
+        }
+        .basket__list li span:nth-child(2) {
+            text-align: right;
+        }
+        .basket__list li span:nth-child(3) {
+            width: 100%;
         }
     }
 </style>
