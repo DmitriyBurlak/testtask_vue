@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header :cart="cart" :currency="currency" @openCart="openBasket = true"></Header>
-    <Basket v-if="openBasket" :data="cart" @close="openBasket = false" :currency="currency" />
+    <Basket v-if="openBasket" :data="cart" @close="openBasket = false" @clear-basket="clearBasket" @delete-item="deleteItem" :currency="currency" />
     <List v-else-if="products.length && !openBasket">
       <Cart v-for="product in products" :key="product.id" :data="product" :currency="currency" @click="addToCart" />
     </List>
@@ -45,6 +45,13 @@ export default {
       } catch(e) {
         console.log('error:', e);
       }
+    },
+    clearBasket() {
+      this.cart = [];
+      this.openBasket = false;
+    },
+    deleteItem(id) {
+      this.cart = this.cart.filter(item => item.id != id)
     },
     addToCart(id, count) {
       count = +count;
